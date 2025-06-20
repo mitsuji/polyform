@@ -1,0 +1,84 @@
+
+div.control {
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 1em;
+  border: solid 1px #ccc;
+}
+div.control > div {
+    padding:1em;
+}
+
+div.pager {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 1em;
+    border: solid 1px #ccc;
+}
+
+div.pager > div {
+    margin:1em;
+}
+div.pager > div > button {
+    margin-top: 1.2em;
+}
+
+div.pager > ul {
+    display: flex;
+    flex-direction: row;
+    padding-left:0;
+    margin:0;
+    list-style:none;
+}
+
+div.pager > ul > li {
+    padding:1em;
+}
+
+
+div.form > div {
+    display: flex;
+    flex-direction: row;
+}
+
+div.form > div > div.label {
+    width: 6em;
+    padding: 1em;
+    border: solid 1px #ccc;
+}
+
+div.form > div > div.input {
+    padding: 1em;
+    border: solid 1px #ccc;
+}
+
+div.form > div > div.items {
+    padding: 1em;
+    border: solid 1px #ccc;
+}
+
+div.form > div > div.items > ul {
+    display: flex;
+    flex-direction: column;
+    padding-left:0;
+    margin:0;
+    list-style:none;
+}
+
+div.form > div > div.items > ul > li {
+    display: flex;
+    flex-direction: row;
+}
+
+div.form > div > div.items > ul > li > div {
+    padding: 0.5em;
+}
+div.form > div > div.items > ul > li > div:nth-child(1) {
+    width:33%;
+}
+div.form > div > div.items > ul > li > div:nth-child(2) {
+    width:33%;
+}
+div.form > div > div.items > ul > li > div:nth-child(3) {
+    width:33%;
+}

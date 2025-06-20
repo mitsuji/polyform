@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="polyform.css"></link>
+    <script src="vue.global_3.5.17.js"></script>
+    <script src="polyform.js"></script>
+  </head>
+  <body>
+    <h1>polyform demo</h1>
+    <div id="polyform">
+      <div class="control">
+        <div>
+          <button @click="test()">テスト</button>
+        </div>
+        <div>
+          <button @click="save()">保存</button>
+        </div>
+      </div>
+      <div class="pager">
+        <div>
+          <button @click="appendForm()">追加</button>
+        </div>
+        <ul>
+          <li v-for="(form, index) in forms" v:key="form.code">
+            <div>
+              <a v-if="!form.isActive" @click="focusForm(index)" href="#">[(#index + 1#)]</a>
+              <span v-if="form.isActive">[(#index + 1#)]</span>
+            </div>
+            <div><button v-bind:disabled="form.isActive" @click="deleteForm(index)">削除</button></div>
+          </li>
+        </ul>
+      </div>
+      <div v-if="form" class="form">
+        <div>
+          <div class="label">code</div>
+          <div class="input"><input type="text" v-model="form.code"></div>
+        </div>
+        <div>
+          <div class="label">name</div>
+          <div class="input"><input type="text" v-model="form.name"></div>
+        </div>
+        <div>
+          <div class="label">age</div>
+          <div class="input"><input type="text" v-model="form.age"></div>
+        </div>
+        <div>
+          <div class="label">items</div>
+          <div class="items">
+            <ul>
+              <li>
+                <div>
+                  code
+                </div>
+                <div>
+                  name
+                </div>
+                <div>
+                  price
+                </div>
+              </li>
+              <li>
+                <div>
+                  <input type="text" v-model="form.item0.code">
+                </div>
+                <div>
+                  <input type="text" v-model="form.item0.name">
+                </div>
+                <div>
+                  <input type="text" v-model="form.item0.price">
+                </div>
+              </li>
+              <li>
+                <div>
+                  <input type="text" v-model="form.item1.code">
+                </div>
+                <div>
+                  <input type="text" v-model="form.item1.name">
+                </div>
+                <div>
+                  <input type="text" v-model="form.item1.price">
+                </div>
+              </li>
+              <li>
+                <div>
+                  <input type="text" v-model="form.item2.code">
+                </div>
+                <div>
+                  <input type="text" v-model="form.item2.name">
+                </div>
+                <div>
+                  <input type="text" v-model="form.item2.price">
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
+  
