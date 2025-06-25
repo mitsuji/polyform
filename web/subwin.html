@@ -5,10 +5,12 @@
         <script>
             const submit0 = () => {
                 const queryParams = new URLSearchParams(window.location.search);
+                const callback = queryParams.get('callback');
+                const index = queryParams.get('index');
                 const code = document.querySelector('input[name="code"]').value;
                 const name = document.querySelector('input[name="name"]').value;
                 const price = document.querySelector('input[name="price"]').value;
-                window.opener.setItem(queryParams.get('index'),code,name,price);
+                window.opener[callback](index,code,name,price);
                 window.close();
             };
         </script>

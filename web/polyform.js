@@ -47,7 +47,7 @@ window.addEventListener('load',(event) => {
                 form.value.item2.price = '3000';
             };
             const openSubwin = (index) => {
-                window.open(`subwin.html?index=${index}`, "URL", "width=280,height=320,toolbar=0");
+                window.open(`subwin.html?callback=setItem&index=${index}`, "URL", "width=280,height=320,toolbar=0");
             };
             const setItem = (index, code, name ,price) => {
                 console.log(`fromSubwin called ${index}, ${code}, ${name}, ${price}`);
