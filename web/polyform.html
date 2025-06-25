@@ -58,6 +58,9 @@
                 <div>
                   price
                 </div>
+                <div>
+                  op
+                </div>
               </li>
               <li>
                 <div>
@@ -68,6 +71,9 @@
                 </div>
                 <div>
                   <input type="text" v-model="form.item0.price">
+                </div>
+                <div>
+                  <button @click="openSubwin(0)">OP</button>
                 </div>
               </li>
               <li>
@@ -80,6 +86,9 @@
                 <div>
                   <input type="text" v-model="form.item1.price">
                 </div>
+                <div>
+                  <button @click="openSubwin(1)">OP</button>
+                </div>
               </li>
               <li>
                 <div>
@@ -90,6 +99,9 @@
                 </div>
                 <div>
                   <input type="text" v-model="form.item2.price">
+                </div>
+                <div>
+                  <button @click="openSubwin(2)">OP</button>
                 </div>
               </li>
             </ul>

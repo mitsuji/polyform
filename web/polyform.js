@@ -46,6 +46,16 @@ window.addEventListener('load',(event) => {
                 form.value.item2.name = '家電3';
                 form.value.item2.price = '3000';
             };
+            const openSubwin = (index) => {
+                window.open(`subwin.html?index=${index}`, "URL", "width=280,height=320,toolbar=0");
+            };
+            const setItem = (index, code, name ,price) => {
+                console.log(`fromSubwin called ${index}, ${code}, ${name}, ${price}`);
+                const item = form.value[`item${index}`];
+                item.code = code;
+                item.name = name;
+                item.price = price;
+            };
             onMounted (async () => {
                 // [TODO] API を叩いてとってくる
 //                const initForms = [{code:'101',name:'三辻',age:'47',
@@ -77,9 +87,10 @@ window.addEventListener('load',(event) => {
                     }
                 });
                 form.value = forms.value.find((item) => item.isActive);
+
             });
-            
-            return { forms,form, appendForm, focusForm, deleteForm, save, test};
+            window.setItem = setItem; // サブウィンドウから呼び出すためにグローバルに登録
+            return { forms,form, appendForm, focusForm, deleteForm, save, test, openSubwin};
         }
     });
     app.config.compilerOptions.delimiters = ['(#', '#)'];

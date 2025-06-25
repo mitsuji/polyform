@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <script>
+            const submit0 = () => {
+                const queryParams = new URLSearchParams(window.location.search);
+                const code = document.querySelector('input[name="code"]').value;
+                const name = document.querySelector('input[name="name"]').value;
+                const price = document.querySelector('input[name="price"]').value;
+                window.opener.setItem(queryParams.get('index'),code,name,price);
+                window.close();
+            };
+        </script>
+    </head>
+    <body>
+        <div>
+            code: <input type="text" name="code" value="999">
+        </div>
+        <div>
+            name: <input type="text" name="name" value="コンピュータ">
+        </div>
+        <div>
+            price: <input type="text" name="price" value="200000">
+        </div>
+        <div>
+            <button onclick="submit0()">確定</button>
+        </div>
+    </body>
+</html>
