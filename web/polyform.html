@@ -59,6 +59,12 @@
                   price
                 </div>
                 <div>
+                  quantity
+                </div>
+                <div>
+                  sum
+                </div>
+                <div>
                   op
                 </div>
               </li>
@@ -70,7 +76,13 @@
                   <input type="text" v-model="form.item0.name">
                 </div>
                 <div>
-                  <input type="text" v-model="form.item0.price">
+                  <input type="text" v-model="form.item0.price" @change="calcSum">
+                </div>
+                <div>
+                  <input type="text" v-model="form.item0.quantity" @change="calcSum">
+                </div>
+                <div>
+                  <input type="text" v-model="form.item0.sum" readonly>
                 </div>
                 <div>
                   <button @click="openSubwin(0)">OP</button>
@@ -84,7 +96,13 @@
                   <input type="text" v-model="form.item1.name">
                 </div>
                 <div>
-                  <input type="text" v-model="form.item1.price">
+                  <input type="text" v-model="form.item1.price" @change="calcSum">
+                </div>
+                <div>
+                  <input type="text" v-model="form.item1.quantity" @change="calcSum">
+                </div>
+                <div>
+                  <input type="text" v-model="form.item1.sum" readonly>
                 </div>
                 <div>
                   <button @click="openSubwin(1)">OP</button>
@@ -98,10 +116,32 @@
                   <input type="text" v-model="form.item2.name">
                 </div>
                 <div>
-                  <input type="text" v-model="form.item2.price">
+                  <input type="text" v-model="form.item2.price" @change="calcSum">
+                </div>
+                <div>
+                  <input type="text" v-model="form.item2.quantity" @change="calcSum">
+                </div>
+                <div>
+                  <input type="text" v-model="form.item2.sum" readonly>
                 </div>
                 <div>
                   <button @click="openSubwin(2)">OP</button>
+                </div>
+              </li>
+              <li>
+                <div>
+                </div>
+                <div>
+                </div>
+                <div>
+                </div>
+                <div>
+                  <input type="text" v-model="form.quantityTotal" readonly>
+                </div>
+                <div>
+                  <input type="text" v-model="form.sumTotal" readonly>
+                </div>
+                <div>
                 </div>
               </li>
             </ul>
