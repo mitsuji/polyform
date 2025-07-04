@@ -11,11 +11,11 @@ window.addEventListener('load',(event) => {
                 // [TODO] フォームに入力した時点でエラーや警告を出したいときはここを使う
                 console.log ("form changed...");
             },{deep : true});
-            const calcSum = () => {
+            const calcSum = (form0) => {
                 let quantityTotal = 0;
                 let sumTotal = 0;
                 for(let i = 0; i < 3; i++) {
-                    const item = form.value[`item${i}`];
+                    const item = form0[`item${i}`];
                     const blankPrice = (item.price == "");
                     const blankQuantity = (item.quantity == "");
                     const price = (blankPrice) ? NaN : fromFormattedNumber(item.price);
@@ -27,10 +27,14 @@ window.addEventListener('load',(event) => {
                     quantityTotal += (blankPrice && blankQuantity) ? 0 : quantity;
                     sumTotal +=  (blankPrice && blankQuantity) ? 0 : sum;
                 }
-                form.value.quantityTotal = (isNaN(quantityTotal) || quantityTotal == 0)
+                form0.quantityTotal = (isNaN(quantityTotal) || quantityTotal == 0)
                                             ? "" : toFormattedNumber(quantityTotal);
-                form.value.sumTotal = (isNaN(sumTotal) || quantityTotal == 0)
+                form0.sumTotal = (isNaN(sumTotal) || quantityTotal == 0)
                                         ? "" : toFormattedNumber(sumTotal);
+            };
+            const callCalcSum = (event) => {
+                console.log (`callCalcSum called ${event.target.value}`);
+                calcSum(form.value);
             };
             const appendForm = (index) => {
                 forms.value.push ({code:'',name:'',age:'',isActive:false,
@@ -44,7 +48,6 @@ window.addEventListener('load',(event) => {
                 const targetForm = forms.value[index];
                 targetForm.isActive = true;
                 form.value = targetForm;
-                calcSum();
             };
             const deleteForm = (index) => {
                 if(!confirm("本当に削除しますか?(元に戻せません)")) return;
@@ -65,9 +68,9 @@ window.addEventListener('load',(event) => {
                     } else {
                         f.isActive = false;
                     }
+                    calcSum(f);
                 });
                 form.value = forms.value.find((item) => item.isActive);
-                calcSum();
             };
             const test = () => {
                 const newData = [{code:'101',name:'三辻',age:'47',
@@ -97,7 +100,7 @@ window.addEventListener('load',(event) => {
                 item.code = code;
                 item.name = name;
                 item.price = price;
-                calcSum();
+                calcSum(form.value);
             };
             onMounted (async () => {
                 // [TODO] API を叩いてとってくる
@@ -110,7 +113,7 @@ window.addEventListener('load',(event) => {
 
             });
             window.setItem = setItem; // サブウィンドウから呼び出すためにグローバルに登録
-            return { forms,form, appendForm, focusForm, deleteForm, save, test, openSubwin, calcSum};
+            return { forms,form, appendForm, focusForm, deleteForm, save, test, openSubwin, callCalcSum};
         }
     });
     app.config.compilerOptions.delimiters = ['(#', '#)'];
