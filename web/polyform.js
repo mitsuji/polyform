@@ -1,4 +1,4 @@
-const fromFormattedNumber = (txt) => Number(txt.replace(",",""));
+const fromFormattedNumber = (txt) => Number(txt.replaceAll(",",""));
 const toFormattedNumber = (num) => num.toLocaleString('ja-JP');
 
 window.addEventListener('load',(event) => {
