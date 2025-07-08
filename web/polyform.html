@@ -76,10 +76,10 @@
                   <input type="text" v-model="form.item0.name">
                 </div>
                 <div>
-                  <input type="text" v-model="form.item0.price" @change="callCalcSum($event)">
+                  <input type="text" v-model="form.item0.price" @change="changePrice(0,$event)" @focus="saveDefault($event)">
                 </div>
                 <div>
-                  <input type="text" v-model="form.item0.quantity" @change="callCalcSum($event)">
+                  <input type="text" v-model="form.item0.quantity" @change="changeQuantity(0,$event)" @focus="saveDefault($event)">
                 </div>
                 <div>
                   <input type="text" v-model="form.item0.sum" readonly>
@@ -96,10 +96,10 @@
                   <input type="text" v-model="form.item1.name">
                 </div>
                 <div>
-                  <input type="text" v-model="form.item1.price" @change="callCalcSum($event)">
+                  <input type="text" v-model="form.item1.price" @change="changePrice(1,$event)" @focus="saveDefault($event)">
                 </div>
                 <div>
-                  <input type="text" v-model="form.item1.quantity" @change="callCalcSum($event)">
+                  <input type="text" v-model="form.item1.quantity" @change="changeQuantity(1,$event)" @focus="saveDefault($event)">
                 </div>
                 <div>
                   <input type="text" v-model="form.item1.sum" readonly>
@@ -116,10 +116,10 @@
                   <input type="text" v-model="form.item2.name">
                 </div>
                 <div>
-                  <input type="text" v-model="form.item2.price" @change="callCalcSum($event)">
+                  <input type="text" v-model="form.item2.price" @change="changePrice(2,$event)" @focus="saveDefault($event)">
                 </div>
                 <div>
-                  <input type="text" v-model="form.item2.quantity" @change="callCalcSum($event)">
+                  <input type="text" v-model="form.item2.quantity" @change="changeQuantity(2,$event)" @focus="saveDefault($event)">
                 </div>
                 <div>
                   <input type="text" v-model="form.item2.sum" readonly>

@@ -32,8 +32,26 @@ window.addEventListener('load',(event) => {
                 form0.sumTotal = (isNaN(sumTotal) || quantityTotal == 0)
                                         ? "" : toFormattedNumber(sumTotal);
             };
-            const callCalcSum = (event) => {
-                console.log (`callCalcSum called ${event.target.value}`);
+            const saveDefault = (event) => {
+                console.log(`saveDefault ${event.target.value}`);
+                event.target.dataset.defaultValue = event.target.value;
+            };
+            const changePrice = (index, event) => {
+                console.log (`changePrice called  ${event.target.dataset.defaultValue} ${event.target.value}`);
+                if (isNaN(event.target.value)) {
+                    alert("Price must be a number.");
+                    form.value[`item${index}`].price = event.target.dataset.defaultValue;
+                    return;
+                }
+                calcSum(form.value);
+            };
+            const changeQuantity = (index, event) => {
+                console.log (`changeQuantity called  ${event.target.dataset.defaultValue} ${event.target.value}`);
+                if (isNaN(event.target.value)) {
+                    alert("Quantiry must be a number.");
+                    form.value[`item${index}`].quantity = event.target.dataset.defaultValue;
+                    return;
+                }
                 calcSum(form.value);
             };
             const appendForm = (index) => {
@@ -113,7 +131,7 @@ window.addEventListener('load',(event) => {
 
             });
             window.setItem = setItem; // サブウィンドウから呼び出すためにグローバルに登録
-            return { forms,form, appendForm, focusForm, deleteForm, save, test, openSubwin, callCalcSum};
+            return { forms,form, appendForm, focusForm, deleteForm, save, test, openSubwin, saveDefault, changePrice, changeQuantity };
         }
     });
     app.config.compilerOptions.delimiters = ['(#', '#)'];
